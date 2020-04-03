@@ -37,7 +37,7 @@ public class HelloSender {
         System.out.println("Message Sent");
     }
 
-    /*@Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 5000)
     public void sendRcvMessage() throws JMSException {
 
         HelloWorldMessage message = HelloWorldMessage
@@ -61,5 +61,5 @@ public class HelloSender {
         });
 
         System.out.println("returned msg : " +receivedMsg.getBody(String.class));
-    }*/
+    }
 }
