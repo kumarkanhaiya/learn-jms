@@ -47,8 +47,9 @@ public class HelloSender {
                 .build();
 
         Message receivedMsg = jmsTemplate.sendAndReceive(JmsConfig.MY_ACTIVE_SEND_RCV_QUEUE, session -> {
+            Message helloMsg = null;
             try {
-                Message helloMsg = session.createTextMessage(objectMapper.writeValueAsString(message));
+                helloMsg = session.createTextMessage(objectMapper.writeValueAsString(message));
                 helloMsg.setStringProperty("_type", "com.kanhaiya.learnjms.model.HelloWorldMessage");
 
                 System.out.println("Sending Hello");
