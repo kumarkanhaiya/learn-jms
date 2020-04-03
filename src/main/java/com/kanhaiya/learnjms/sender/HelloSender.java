@@ -46,19 +46,16 @@ public class HelloSender {
                 .message("Hello")
                 .build();
 
-        Message receivedMsg = jmsTemplate.sendAndReceive(JmsConfig.MY_ACTIVE_SEND_RCV_QUEUE, new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                try {
-                    Message helloMsg = session.createTextMessage(objectMapper.writeValueAsString(message));
-                    helloMsg.setStringProperty("_type", "com.kanhaiya.learnjms.model.HelloWorldMessage");
+        Message receivedMsg = jmsTemplate.sendAndReceive(JmsConfig.MY_ACTIVE_SEND_RCV_QUEUE, session -> {
+            try {
+                Message helloMsg = session.createTextMessage(objectMapper.writeValueAsString(message));
+                helloMsg.setStringProperty("_type", "com.kanhaiya.learnjms.model.HelloWorldMessage");
 
-                    System.out.println("Sending Hello");
+                System.out.println("Sending Hello");
 
-                    return helloMsg;
-                } catch (JsonProcessingException e) {
-                    throw new JMSException("kboom");
-                }
+                return helloMsg;
+            } catch (JsonProcessingException e) {
+                throw new JMSException("kboom");
             }
         });
 
