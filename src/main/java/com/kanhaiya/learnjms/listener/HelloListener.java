@@ -20,7 +20,7 @@ public class HelloListener {
 
     private final JmsTemplate jmsTemplate;
 
-    /*@JmsListener(destination = JmsConfig.MY_ACTIVE_QUEUE)
+    @JmsListener(destination = JmsConfig.MY_ACTIVE_QUEUE)
     public void listen(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders header, Message message){
 
@@ -28,9 +28,9 @@ public class HelloListener {
         System.out.println(helloWorldMessage);
 
         //throw new RuntimeException("kboom");
-    }*/
+    }
 
-    @JmsListener(destination = JmsConfig.MY_ACTIVE_SEND_RCV_QUEUE)
+    /*@JmsListener(destination = JmsConfig.MY_ACTIVE_SEND_RCV_QUEUE)
     public void listenForHello(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders header, Message message) throws JMSException {
 
@@ -44,5 +44,5 @@ public class HelloListener {
                 .build();
 
         jmsTemplate.convertAndSend(message.getJMSReplyTo(), returnMsg);
-    }
+    }*/
 }

@@ -22,7 +22,7 @@ public class HelloSender {
     private final JmsTemplate jmsTemplate;
     private final ObjectMapper objectMapper;
 
-    /*@Scheduled(fixedRate = 2000)
+    @Scheduled(fixedRate = 2000)
     public void sendMessage(){
         System.out.println("I am sending a message.");
 
@@ -35,9 +35,9 @@ public class HelloSender {
         jmsTemplate.convertAndSend(JmsConfig.MY_ACTIVE_QUEUE, message);
 
         System.out.println("Message Sent");
-    }*/
+    }
 
-    @Scheduled(fixedRate = 5000)
+    /*@Scheduled(fixedRate = 5000)
     public void sendRcvMessage() throws JMSException {
 
         HelloWorldMessage message = HelloWorldMessage
@@ -61,5 +61,5 @@ public class HelloSender {
         });
 
         System.out.println("returned msg : " +receivedMsg.getBody(String.class));
-    }
+    }*/
 }
